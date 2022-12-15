@@ -57,8 +57,8 @@ final class GandiService
         $update = Http::withHeaders(['Authorization' => 'Apikey ' . config('app.gandi.key')])
             ->put($url, ['items' => $records]);
 
-        Log::debug($url);
-        Log::debug(json_encode(['items' => $records]));
+        Log::debug('URL: ' . $url);
+        Log::debug('GANDI-BODY: ' . json_encode(['items' => $records]));
 
         $isSuccess = $update->successful();
 

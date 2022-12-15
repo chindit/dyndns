@@ -44,7 +44,7 @@ final class IpService
             return '';
         }
 
-        Log::debug($process->getOutput());
+        Log::debug('IP: ' . $process->getOutput());
 
         return trim($process->getOutput());
     }
