@@ -53,8 +53,12 @@ final class GandiService
             return $record;
         });
 
+        $url = sprintf('%s%s/records/%s', config('app.gandi.url'), config('app.gandi.domain'), config('app.gandi.subdomain'));
         $update = Http::withHeaders(['Authorization' => 'Apikey ' . config('app.gandi.key')])
-            ->put(sprintf('%s%s/records/%s', config('app.gandi.url'), config('app.gandi.domain'), config('app.gandi.subdomain')), ['items' => $records]);
+            ->put($url, ['items' => $records]);
+
+        Log::debug($url);
+        Log::debug(json_encode(['items' => $records]));
 
         $isSuccess = $update->successful();
 
