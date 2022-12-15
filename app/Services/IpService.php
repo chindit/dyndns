@@ -26,14 +26,14 @@ final class IpService
 
     private function getIp(bool $is6 = false): string
     {
-        $processParts = [
+        $processParts = array_filter([
             'dig',
             ($is6) ? '-6' : '-4',
             '+short',
             'myip.opendns.com',
             ($is6) ? 'AAAA' : '',
             '@resolver1.opendns.com'
-        ];
+        ]);
 
         $process = new Process($processParts);
         $process->run();
