@@ -32,7 +32,7 @@ final class IpService
             '+short',
             'myip.opendns.com',
             ($is6) ? '' : 'AAAA',
-            '@reslover1.opendns.com'
+            '@resolver1.opendns.com'
         ];
 
         $process = new Process($processParts);
