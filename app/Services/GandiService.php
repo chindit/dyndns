@@ -68,6 +68,8 @@ final class GandiService
             Log::error($update->body());
         }
 
+        Log::debug($update->body());
+
         return $isSuccess;
     }
 }
