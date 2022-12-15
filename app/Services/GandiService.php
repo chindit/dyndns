@@ -5,6 +5,7 @@ namespace App\Services;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Http;
+use Illuminate\Support\Facades\Log;
 
 final class GandiService
 {
@@ -59,6 +60,8 @@ final class GandiService
 
         if ($isSuccess) {
             Cache::put('ipv4', $this->ipService->getIpv4());
+        } else {
+            Log::error($update->body());
         }
 
         return $isSuccess;
